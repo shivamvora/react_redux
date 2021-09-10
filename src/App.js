@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Contacts from './components/contacts/Contacts';
+import Navbar from './components/elements/Navbar';
+import { Provider } from 'react-redux'
+import store from './store'
+import './styles/App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Navbar />
+        <div className="container">
+          <div className="py-3">
+            <Contacts />
+          </div>
+        </div>
+      </div>
+    </Provider>
   );
 }
 
