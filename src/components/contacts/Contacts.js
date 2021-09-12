@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-
+import Contact from './Contact';
 
 const Contacts = () => {
 
@@ -21,27 +21,11 @@ const Contacts = () => {
                         <th>Name</th>
                         <th>Phone</th>
                         <th>E-mail</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        contacts.map( contact => {
-                            console.log( "mapped data", contact )
-                            return (
-                                <tr>
-                                    <td>
-                                        <div className="custom-control custom-checkbox">
-                                            <input type="checkbox" className="custom-control-input" />
-                                            <label className="custom-control-label"></label>
-                                        </div>
-                                    </td>
-                                    <td>{contact.name}</td>
-                                    <td>{contact.phone}</td>
-                                    <td>{contact.email}</td>
-                                </tr>
-                            )
-                        } )
-                    }
+                    {contacts.map( ( contact ) => <Contact contact={contact} /> )}
 
                 </tbody>
             </table>

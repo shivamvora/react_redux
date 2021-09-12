@@ -1,12 +1,14 @@
 $theme-colors: (
-  "primary": #6200ea,
+  "primary": #201f3f,
   "success": #33691e,
-  "danger":#f50057,
-  "warning":#ffab00
+  "danger": #f50057,
+  "warning": #ffab00,
+  "light": #e0dedc,
+  "shivam": #f4faed,
 );
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
-body{
-    padding-top: 5rem;
+body {
+  padding-top: 5rem;
 }
