@@ -1,11 +1,13 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { clearAllContact, selectAllContact } from '../../Redux/actions/contactAction';
 import Contact from './Contact';
 
 const Contacts = () => {
-
-    let contacts = useSelector( state => state.contacts )
-    console.log( "state data inside contacts js file", contacts )
+    const dispatch = useDispatch();
+    const [selectAll, setSelectAll] = useState( false );
+    let contacts = useSelector( ( state ) => state.contacts.contacts )
+    // console.log( "state data inside contacts js file", contacts )
 
     return (
         <div>
@@ -14,8 +16,14 @@ const Contacts = () => {
                     <tr className="bg-danger text-white">
                         <th scope="col">
                             <div className="custom-control custom-checkbox">
-                                <input type="checkbox" className="custom-control-input" />
-                                <label className="custom-control-label"></label>
+                                <input
+                                    id="select_all"
+                                    type="checkbox"
+                                    className="custom-control-input"
+                                    value={selectAll}
+                                    onClick={() => setSelectAll( !selectAll )}
+                                />
+                                <label htmlFor="select_all" className="custom-control-label"></label>
                             </div>
                         </th>
                         <th>Name</th>
@@ -25,7 +33,7 @@ const Contacts = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {contacts.map( ( contact ) => <Contact contact={contact} /> )}
+                    {contacts.map( ( contact ) => <Contact contact={contact} key={contact.id} selectAll={selectAll} /> )}
 
                 </tbody>
             </table>
